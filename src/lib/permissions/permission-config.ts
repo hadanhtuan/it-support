@@ -61,14 +61,7 @@ export const ROUTE_PERMISSIONS: RoutePermission[] = [
     path: '/user/profile',
     isPublic: true
   },
-
   // IT Support routes
-  {
-    path: '/it-support/update-profile',
-    allowedRoles: [UserRole.IT_SUPPORT],
-    allowedStatuses: [UserStatus.ACTIVE, UserStatus.INACTIVE],
-    redirectTo: '/'
-  },
   {
     path: '/it-support/assigned-tickets',
     allowedRoles: [UserRole.IT_SUPPORT],
@@ -94,7 +87,7 @@ export const ROUTE_PERMISSIONS: RoutePermission[] = [
   },
   {
     path: '/user/update-profile',
-    allowedRoles: [UserRole.USER],
+    allowedRoles: [UserRole.USER, UserRole.IT_SUPPORT],
     allowedStatuses: [UserStatus.ACTIVE, UserStatus.INACTIVE],
     redirectTo: '/'
   },

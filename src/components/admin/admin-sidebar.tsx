@@ -13,11 +13,6 @@ export function AdminSidebar(): React.JSX.Element {
 
   const sidebarItems = [
     {
-      title: t('admin.navigation.dashboard'),
-      href: '/admin',
-      icon: BarChart3
-    },
-    {
       title: t('admin.navigation.users'),
       href: '/admin/manage-users',
       icon: Users
@@ -36,11 +31,6 @@ export function AdminSidebar(): React.JSX.Element {
       title: t('admin.navigation.urgentIssues'),
       href: '/admin/urgent-issues',
       icon: AlertTriangle
-    },
-    {
-      title: t('admin.navigation.configuration'),
-      href: '/admin/configuration',
-      icon: Settings
     }
   ];
 

@@ -39,10 +39,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
       if (identity) {
         try {
-          console.log('Warning: Auth context fetching user info for:', identity.email);
           const userInfo = await FirestoreClientHelper.getOne<User>(Collection.USERS, [
             { field: 'email', op: '==', value: identity.email }
           ]);
+          console.log('Fetched user info:', userInfo);
 
           setUserState({ identity, userInfo });
         } catch (error) {

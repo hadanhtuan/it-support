@@ -145,7 +145,7 @@ export default function HeaderComponent(): JSX.Element {
             },
             {
               label: t('profile.updateProfile'),
-              href: '/it-support/update-profile',
+              href: '/user/update-profile',
               icon: UserRoundPen,
               isActive: true
             }

@@ -115,8 +115,6 @@ export default function RegisterPage(): React.JSX.Element {
         formData.password
       );
 
-      const status = userRole === UserRole.USER ? UserStatus.ACTIVE : UserStatus.INACTIVE;
-
       const user: Partial<User> = {
         email: formData.email,
         fullname: formData.fullname,
@@ -124,7 +122,7 @@ export default function RegisterPage(): React.JSX.Element {
         uid: userCredential.user.uid,
         id: userCredential.user.uid,
         signInMethod: SignInMethod.EMAIL_PASSWORD,
-        status
+        status: UserStatus.ACTIVE
       };
 
       // Send email verification using Firebase client SDK
