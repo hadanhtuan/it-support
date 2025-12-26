@@ -70,22 +70,58 @@ export default function ManageTicketsPage(): React.JSX.Element {
 
     setAssigningTicketId(ticket.id);
     try {
+      const promises: any[] = [];
       // Assign ticket
-      await ticketService.assignTicket(ticket, selectedItSupport);
+      promises.push(ticketService.assignTicket(ticket, selectedItSupport));
+
+      promises.push(
+        notificationService.createNotification({
+          userId: selectedItSupport.id,
+          type: NotificationType.TICKET_ASSIGNED,
+          title: 'Phiếu hỗ trợ mới được giao',
+          message: `Bạn đã được giao phiếu hỗ trợ: ${ticket.title}`,
+          metadata: {
+            ticketId: ticket.id,
+            ticketTitle: ticket.title,
+            ticketPriority: ticket.priority,
+            ticketCategory: ticket.category
+          }
+        })
+      );
 
       // Create notification for IT support
-      await notificationService.createNotification({
-        userId: selectedItSupport.id,
-        type: NotificationType.TICKET_ASSIGNED,
-        title: 'Phiếu hỗ trợ mới được giao',
-        message: `Bạn đã được giao phiếu hỗ trợ: ${ticket.title}`,
-        metadata: {
-          ticketId: ticket.id,
-          ticketTitle: ticket.title,
-          ticketPriority: ticket.priority,
-          ticketCategory: ticket.category
-        }
-      });
+      // await notificationService.createNotification({
+      //   userId: selectedItSupport.id,
+      //   type: NotificationType.TICKET_ASSIGNED,
+      //   title: 'Phiếu hỗ trợ mới được giao',
+      //   message: `Bạn đã được giao phiếu hỗ trợ: ${ticket.title}`,
+      //   metadata: {
+      //     ticketId: ticket.id,
+      //     ticketTitle: ticket.title,
+      //     ticketPriority: ticket.priority,
+      //     ticketCategory: ticket.category
+      //   }
+      // });
+
+      // Create notification for ticket creator
+      if (ticket.creatorId) {
+        promises.push(
+          notificationService.createNotification({
+            userId: ticket.creatorId,
+            type: NotificationType.SYSTEM,
+            title: 'Phiếu hỗ trợ đã được giao',
+            message: `Phiếu hỗ trợ "${ticket.title}" của bạn đã được giao cho ${selectedItSupport.fullname}`,
+            metadata: {
+              ticketId: ticket.id,
+              ticketTitle: ticket.title,
+              assignedToName: selectedItSupport.fullname,
+              assignedToId: selectedItSupport.id
+            }
+          })
+        );
+      }
+
+      await Promise.all(promises);
 
       toast({
         title: 'Thành công',

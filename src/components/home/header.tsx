@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { LanguageSelector } from '@/components/ui/language-selector';
+import { NotificationBell } from '@/components/ui/notification-bell';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useAuth, UserState } from '@/lib/context';
@@ -252,6 +253,9 @@ export default function HeaderComponent(): JSX.Element {
               {/* Mobile - Language Selector */}
               <LanguageSelector />
 
+              {/* Mobile - Notification Bell (if logged in) */}
+              {isLoggedIn && userState?.userInfo?.id && <NotificationBell userId={userState.userInfo.id} />}
+
               {/* Mobile - User Avatar (if logged in) */}
               {isLoggedIn && firebaseAuth.currentUser && (
                 <Avatar className='h-8 w-8'>
@@ -368,6 +372,9 @@ export default function HeaderComponent(): JSX.Element {
             <>
               {/* Desktop - Language Selector */}
               <LanguageSelector />
+
+              {/* Desktop - Notification Bell (if logged in) */}
+              {isLoggedIn && userState?.userInfo?.id && <NotificationBell userId={userState.userInfo.id} />}
 
               {/* Desktop - Email Verification Alert */}
               {isLoggedIn && !userState?.identity?.emailVerified && (
