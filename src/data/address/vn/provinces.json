@@ -1,0 +1,240 @@
+[
+  {
+    "id": "11",
+    "name": "Hà Nội",
+    "type": "thanh-pho",
+    "parentId": null,
+    "slug": "ha-noi"
+  },
+  {
+    "id": "12",
+    "name": "Hồ Chí Minh",
+    "type": "thanh-pho",
+    "parentId": null,
+    "slug": "ho-chi-minh"
+  },
+  {
+    "id": "13",
+    "name": "Đà Nẵng",
+    "type": "thanh-pho",
+    "parentId": null,
+    "slug": "da-nang"
+  },
+  {
+    "id": "14",
+    "name": "Hải Phòng",
+    "type": "thanh-pho",
+    "parentId": null,
+    "slug": "hai-phong"
+  },
+  {
+    "id": "15",
+    "name": "Cần Thơ",
+    "type": "thanh-pho",
+    "parentId": null,
+    "slug": "can-tho"
+  },
+  {
+    "id": "16",
+    "name": "Huế",
+    "type": "thanh-pho",
+    "parentId": null,
+    "slug": "hue"
+  },
+  {
+    "id": "17",
+    "name": "An Giang",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "an-giang"
+  },
+  {
+    "id": "18",
+    "name": "Bắc Ninh",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "bac-ninh"
+  },
+  {
+    "id": "19",
+    "name": "Cà Mau",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "ca-mau"
+  },
+  {
+    "id": "20",
+    "name": "Cao Bằng",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "cao-bang"
+  },
+  {
+    "id": "21",
+    "name": "Đắk Lắk",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "dak-lak"
+  },
+  {
+    "id": "22",
+    "name": "Điện Biên",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "dien-bien"
+  },
+  {
+    "id": "23",
+    "name": "Đồng Nai",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "dong-nai"
+  },
+  {
+    "id": "24",
+    "name": "Đồng Tháp",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "dong-thap"
+  },
+  {
+    "id": "25",
+    "name": "Gia Lai",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "gia-lai"
+  },
+  {
+    "id": "26",
+    "name": "Hà Tĩnh",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "ha-tinh"
+  },
+  {
+    "id": "27",
+    "name": "Hưng Yên",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "hung-yen"
+  },
+  {
+    "id": "28",
+    "name": "Khánh Hòa",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "khanh-hoa"
+  },
+  {
+    "id": "29",
+    "name": "Lai Châu",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "lai-chau"
+  },
+  {
+    "id": "30",
+    "name": "Lâm Đồng",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "lam-dong"
+  },
+  {
+    "id": "31",
+    "name": "Lạng Sơn",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "lang-son"
+  },
+  {
+    "id": "32",
+    "name": "Lào Cai",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "lao-cai"
+  },
+  {
+    "id": "33",
+    "name": "Nghệ An",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "nghe-an"
+  },
+  {
+    "id": "34",
+    "name": "Ninh Bình",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "ninh-binh"
+  },
+  {
+    "id": "35",
+    "name": "Phú Thọ",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "phu-tho"
+  },
+  {
+    "id": "36",
+    "name": "Quảng Ngãi",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "quang-ngai"
+  },
+  {
+    "id": "37",
+    "name": "Quảng Ninh",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "quang-ninh"
+  },
+  {
+    "id": "38",
+    "name": "Quảng Trị",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "quang-tri"
+  },
+  {
+    "id": "39",
+    "name": "Sơn La",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "son-la"
+  },
+  {
+    "id": "40",
+    "name": "Tây Ninh",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "tay-ninh"
+  },
+  {
+    "id": "41",
+    "name": "Thái Nguyên",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "thai-nguyen"
+  },
+  {
+    "id": "42",
+    "name": "Thanh Hóa",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "thanh-hoa"
+  },
+  {
+    "id": "43",
+    "name": "Tuyên Quang",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "tuyen-quang"
+  },
+  {
+    "id": "44",
+    "name": "Vĩnh Long",
+    "type": "tinh",
+    "parentId": null,
+    "slug": "vinh-long"
+  }
+]

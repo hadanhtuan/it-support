@@ -1,0 +1,80 @@
+{
+  "env": {
+    "browser": true,
+    "es2022": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base",
+    "next/core-web-vitals",
+    "plugin:react/recommended"
+  ],
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "@regru/prefer-early-return"
+  ],
+  "rules": {
+    "linebreak-style": "off",
+    "no-restricted-syntax": "off",
+    "no-unneeded-ternary": "off",
+    "max-len": [
+      "error",
+      180
+    ],
+    "implicit-arrow-linebreak": "off",
+    "class-methods-use-this": "off",
+    "no-else-return": [
+      "error",
+      {
+        "allowElseIf": false
+      }
+    ],
+    "@typescript-eslint/comma-dangle": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-default-export": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "@typescript-eslint/explicit-member-accessibility": "warn",
+    "object-curly-newline": "off",
+    // "@typescript-eslint/typedef": [
+    //   "error",
+    //   {
+    //     "arrayDestructuring": true,
+    //     "arrowParameter": true,
+    //     "memberVariableDeclaration": true,
+    //     "objectDestructuring": true,
+    //     "parameter": true,
+    //     "propertyDeclaration": true,
+    //     "variableDeclaration": true,
+    //     "variableDeclarationIgnoreFunction": true
+    //   }
+    // ],
+    "@regru/prefer-early-return/prefer-early-return": [
+      "error",
+      {
+        "maximumStatements": 0
+      }
+    ]
+  }
+}

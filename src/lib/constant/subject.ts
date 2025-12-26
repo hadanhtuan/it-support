@@ -1,0 +1,40 @@
+export const AvailableSubjects: string[] = [
+  'Mathematics',
+  'English',
+  'Science',
+  'Physics',
+  'Chemistry',
+  'Biology',
+  'History',
+  'Geography',
+  'Programming',
+  'Computer Science',
+  'Music',
+  'Art',
+  'Languages',
+  'French',
+  'Spanish',
+  'German',
+  'Economics',
+  'Business Studies',
+  'Psychology',
+  'Philosophy'
+];
+
+export const GradeLevels: string[] = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  '11',
+  '12',
+  'College',
+  'Adult Education',
+  'All Levels'
+];
