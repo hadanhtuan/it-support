@@ -6,6 +6,7 @@ import { BulkUpdateStatusRequest } from './models/requests/user';
 export interface IUserService {
   bulkUpdateStatus: (payload: BulkUpdateStatusRequest) => Promise<void>;
   getHighestRatedITSupport: (limit?: number) => Promise<ITSupport[]>;
+  getAllITSupport: () => Promise<ITSupport[]>;
   getUserByUid: (uid: string) => Promise<any | null>;
 }
 
@@ -25,6 +26,19 @@ export const userService = ((): IUserService => {
         return result.documents;
       } catch (error) {
         console.error('Error fetching highest rated IT support:', error);
+        return [];
+      }
+    },
+
+    getAllITSupport: async (): Promise<ITSupport[]> => {
+      try {
+        const result = await FirestoreClientHelper.getMany<ITSupport>(Collection.USERS, {
+          conditions: [{ field: 'role', op: '==', value: UserRole.IT_SUPPORT }],
+          orderBy: [{ field: 'fullname', op: 'asc' }]
+        });
+        return result.documents;
+      } catch (error) {
+        console.error('Error fetching all IT support:', error);
         return [];
       }
     },

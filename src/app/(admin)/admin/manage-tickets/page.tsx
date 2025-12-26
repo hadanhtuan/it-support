@@ -6,23 +6,30 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useTranslation } from '@/lib/i18n';
-import { Ticket, TicketStatus, TicketPriority, TicketCategory } from '@/lib/core/models';
+import { Ticket, TicketStatus, TicketPriority, TicketCategory, ITSupport, NotificationType } from '@/lib/core/models';
 import { ticketService } from '@/services/ticket.service';
-import { Clock, User, MapPin, Search, Filter } from 'lucide-react';
+import { userService } from '@/services/user.service';
+import { notificationService } from '@/services/notification.service';
+import { Clock, User, MapPin, Search, Filter, UserCheck } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import { Timestamp } from 'firebase/firestore';
+import { useToast } from '@/lib/hooks/use-toast';
 
 export default function ManageTicketsPage(): React.JSX.Element {
   const { t } = useTranslation();
+  const { toast } = useToast();
 
   const [tickets, setTickets] = useState<Ticket[]>([]);
+  const [itSupportList, setItSupportList] = useState<ITSupport[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<TicketStatus | 'ALL'>('ALL');
   const [priorityFilter, setPriorityFilter] = useState<TicketPriority | 'ALL'>('ALL');
+  const [assigningTicketId, setAssigningTicketId] = useState<string | null>(null);
 
   useEffect(() => {
     loadTickets();
+    loadITSupport();
   }, []);
 
   const loadTickets = async () => {
@@ -34,6 +41,68 @@ export default function ManageTicketsPage(): React.JSX.Element {
       console.error('Error loading tickets:', error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const loadITSupport = async () => {
+    try {
+      const itSupports = await userService.getAllITSupport();
+      setItSupportList(itSupports);
+    } catch (error) {
+      console.error('Error loading IT support:', error);
+    }
+  };
+
+  const handleAssignTicket = async (ticket: Ticket, itSupportId: string) => {
+    if (!itSupportId || ticket.assignedToId) {
+      return;
+    }
+
+    const selectedItSupport = itSupportList.find((its) => its.id === itSupportId);
+    if (!selectedItSupport) {
+      toast({
+        title: 'Lỗi',
+        description: 'Không tìm thấy nhân viên IT Support',
+        variant: 'destructive'
+      });
+      return;
+    }
+
+    setAssigningTicketId(ticket.id);
+    try {
+      // Assign ticket
+      await ticketService.assignTicket(ticket, selectedItSupport);
+
+      // Create notification for IT support
+      await notificationService.createNotification({
+        userId: selectedItSupport.id,
+        type: NotificationType.TICKET_ASSIGNED,
+        title: 'Phiếu hỗ trợ mới được giao',
+        message: `Bạn đã được giao phiếu hỗ trợ: ${ticket.title}`,
+        metadata: {
+          ticketId: ticket.id,
+          ticketTitle: ticket.title,
+          ticketPriority: ticket.priority,
+          ticketCategory: ticket.category
+        }
+      });
+
+      toast({
+        title: 'Thành công',
+        description: `Đã giao phiếu cho ${selectedItSupport.fullname}`
+      });
+
+      // Reload tickets to update UI
+      await loadTickets();
+    } catch (error: any) {
+      console.error('Error assigning ticket:', error);
+      toast({
+        title: 'Lỗi',
+        description: error.message || 'Không thể giao phiếu hỗ trợ',
+        variant: 'destructive'
+      });
+    } finally {
+      setAssigningTicketId(null);
     }
   };
 
@@ -241,6 +310,39 @@ export default function ManageTicketsPage(): React.JSX.Element {
                           <a href={`/tickets/${ticket.id}`}>Xem chi tiết</a>
                         </Button>
                       </div>
+                    </div>
+
+                    {/* IT Support Assignment */}
+                    <div className='mt-3 pt-3 border-t flex items-center justify-between'>
+                      {ticket.assignedToId ? (
+                        <div className='flex items-center space-x-2 text-sm'>
+                          <UserCheck className='h-4 w-4 text-green-600' />
+                          <span className='text-muted-foreground'>Đã giao cho:</span>
+                          <span className='font-medium'>{ticket.assignedToName}</span>
+                        </div>
+                      ) : (
+                        <div className='flex items-center space-x-2 flex-1'>
+                          <UserCheck className='h-4 w-4' />
+                          <Select
+                            disabled={assigningTicketId === ticket.id}
+                            onValueChange={(value) => handleAssignTicket(ticket, value)}
+                          >
+                            <SelectTrigger className='w-[250px]'>
+                              <SelectValue placeholder='Giao cho IT Support...' />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {itSupportList.map((its) => (
+                                <SelectItem key={its.id} value={its.id}>
+                                  {its.fullname} {its.rating ? `(⭐ ${its.rating.toFixed(1)})` : ''}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                          {assigningTicketId === ticket.id && (
+                            <span className='text-xs text-muted-foreground'>Đang xử lý...</span>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </CardContent>
                 </Card>

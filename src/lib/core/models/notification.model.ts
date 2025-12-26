@@ -1,7 +1,8 @@
 export enum NotificationType {
   MENTION = 'MENTION',
   MESSAGE = 'MESSAGE',
-  SYSTEM = 'SYSTEM'
+  SYSTEM = 'SYSTEM',
+  TICKET_ASSIGNED = 'TICKET_ASSIGNED'
 }
 
 export interface Notification {
