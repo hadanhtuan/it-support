@@ -1,7 +1,8 @@
 'use client';
 
-import { Hero, HowItWorks } from '@/components/home';
+import { HowItWorks } from '@/components/home';
 import SupportCategories from '@/components/home/support-categories';
+import { TicketDonutChart, TicketBarChart } from '@/components/charts';
 import { firebaseAuth } from '@/lib/firebase/client/client-config';
 import React, { useEffect } from 'react';
 
@@ -19,7 +20,12 @@ export default function Home(): React.JSX.Element {
 
   return (
     <div className='space-y-8 pb-16'>
-      <Hero />
+      <div className='container pt-8'>
+        <TicketDonutChart />
+      </div>
+      <div className='container'>
+        <TicketBarChart />
+      </div>
       <SupportCategories />
       <HowItWorks />
       <div className='container py-16 text-center'>
