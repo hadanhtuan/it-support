@@ -1,9 +1,12 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 import { onCLS, onINP, onLCP, onFCP, onTTFB } from 'web-vitals';
 
 export function WebVitals() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const sendToGoogleAnalytics = ({ name, value, id }: { name: string; value: number; id: string }) => {
       // Log metrics to console for debugging
@@ -45,7 +48,7 @@ export function WebVitals() {
     onLCP(sendToGoogleAnalytics);
     onFCP(sendToGoogleAnalytics);
     onTTFB(sendToGoogleAnalytics);
-  }, []);
+  }, [pathname]);
 
   return null;
 }
