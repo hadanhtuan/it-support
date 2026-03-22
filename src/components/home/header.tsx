@@ -196,45 +196,9 @@ export default function HeaderComponent(): JSX.Element {
   };
 
   return (
-    <header className='sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
+    <header className='sticky top-0 z-50 w-full border-b border-[#1e2f9a]' style={{ background: '#3d52c4' }}>
       {/* Top Row */}
-      <div className='border-b border-border/40'>
-        <div className='container flex h-10 items-center justify-between'>
-          {/* Top Left Navigation */}
-          <nav className='hidden md:flex items-center gap-4'>
-            <Link
-              href='/tickets'
-              className='text-xs font-medium transition-colors hover:text-primary text-muted-foreground'
-            >
-              Phiếu hỗ trợ
-            </Link>
-            <Link
-              href='/it-support'
-              className='text-xs font-medium transition-colors hover:text-primary text-muted-foreground'
-            >
-              Nhân viên IT
-            </Link>
-          </nav>
-
-          {/* Top Right Navigation */}
-          <nav className='hidden md:flex items-center gap-4'>
-            <Link
-              href='https://shorturl.at/BFVbZ'
-              target='_blank'
-              className='text-xs font-medium transition-colors hover:text-primary text-muted-foreground'
-            >
-              {t('header.feedback')}
-            </Link>
-            <Link
-              href='/help'
-              className='text-xs font-medium transition-colors hover:text-primary text-muted-foreground'
-            >
-              {t('header.help')}
-            </Link>
-          </nav>
-        </div>
-      </div>
-
+      <div className='border-b border-[#1e2f9a]'></div>
       {/* Bottom Row */}
       <div className='container flex h-16 items-center justify-between'>
         {/* Bottom Left - Logo */}

@@ -9,7 +9,7 @@ import { ChevronDown } from 'lucide-react';
 
 export function ITHero(): React.JSX.Element {
   return (
-    <section className='bg-gradient-to-br from-blue-900 via-blue-700 to-indigo-400 py-16'>
+    <section className='py-16' style={{ background: 'linear-gradient(135deg, #2b40b3 0%, #3a55d4 50%, #6b82e8 100%)' }}>
       <div className='container'>
         <div className='flex flex-col lg:flex-row items-center gap-12'>
           {/* Left content */}
@@ -74,7 +74,7 @@ export function ITHero(): React.JSX.Element {
               {/* Blend edges into section background */}
               <div
                 className='absolute inset-0 pointer-events-none rounded-2xl'
-                style={{ background: 'linear-gradient(to right, #1e3a8a 0%, transparent 40%)' }}
+                style={{ background: 'linear-gradient(to right, #2b40b3 0%, transparent 45%)' }}
               />
             </div>
           </motion.div>

@@ -33,8 +33,8 @@ export function DonationBanner(): React.JSX.Element {
             <h3 className='text-lg font-bold'>Ủng hộ dự án IT Support</h3>
           </div>
           <p className='text-muted-foreground text-sm leading-relaxed max-w-sm'>
-            Nếu dự án hữu ích với bạn, hãy ủng hộ chúng tôi để tiếp tục phát triển và duy trì dịch vụ tốt hơn.
-            Quét mã QR để chuyển khoản qua <span className='font-semibold text-foreground'>MoMo / VietQR / Napas 247</span>.
+            Nếu dự án hữu ích với bạn, hãy ủng hộ chúng tôi để tiếp tục phát triển và duy trì dịch vụ tốt hơn. Quét mã
+            QR để chuyển khoản qua <span className='font-semibold text-foreground'>MoMo</span>.
           </p>
           <p className='mt-3 text-xs text-muted-foreground'>Cảm ơn sự hỗ trợ của bạn 💙</p>
         </div>
