@@ -3,36 +3,35 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '../ui/button';
-import { Shield, Monitor, Wifi, Server, HardDrive } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 export function ITHero(): React.JSX.Element {
   return (
-    <section className='bg-background py-16'>
+    <section className='bg-gradient-to-br from-blue-900 via-blue-700 to-indigo-400 py-16'>
       <div className='container'>
         <div className='flex flex-col lg:flex-row items-center gap-12'>
           {/* Left content */}
-          <div className='w-full lg:w-1/2'>
+          <div className='w-full lg:w-1/2 text-white'>
             <motion.h1
-              className='text-4xl font-bold tracking-tight sm:text-5xl'
+              className='text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl leading-tight'
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Dịch vụ IT Support
+              Hỗ trợ IT &amp; Quản trị hệ thống
               <br />
-              <span className='text-muted-foreground font-semibold text-3xl sm:text-4xl'>
-                cho doanh nghiệp vừa &amp; nhỏ
-              </span>
+              cho cá nhân và doanh nghiệp
             </motion.h1>
 
             <motion.p
-              className='text-muted-foreground mt-4 text-base'
+              className='mt-4 text-blue-50 text-base max-w-md'
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Cung cấp giải pháp IT chuyên nghiệp cho doanh nghiệp vừa &amp; nhỏ
+              Giải quyết sự cố máy tính, mạng và hệ thống IT nhanh chóng và chuyên nghiệp.
             </motion.p>
 
             <motion.div
@@ -41,44 +40,42 @@ export function ITHero(): React.JSX.Element {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <Button size='lg' asChild>
-                <Link href='/user/create-ticket'>Liên hệ ngay</Link>
+              <Button size='lg' className='bg-white text-blue-600 hover:bg-blue-50 font-semibold' asChild>
+                <Link href='/user/create-ticket'>Tạo Ticket Hỗ Trợ</Link>
               </Button>
-              <Button size='lg' variant='outline' asChild>
-                <Link href='#services'>Xem dịch vụ</Link>
+              <Button
+                size='lg'
+                variant='outline'
+                className='bg-transparent border-white text-white hover:bg-white/10 hover:text-white'
+                asChild
+              >
+                <Link href='#services' className='flex items-center gap-1'>
+                  Xem Dịch Vụ <ChevronDown className='w-4 h-4' />
+                </Link>
               </Button>
             </motion.div>
           </div>
 
-          {/* Right illustration */}
+          {/* Right: IT support image */}
           <motion.div
             className='w-full lg:w-1/2 flex justify-center'
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <div className='relative w-72 h-72 sm:w-96 sm:h-96'>
-              {/* Central shield */}
-              <div className='absolute inset-0 flex items-center justify-center'>
-                <div className='w-40 h-40 rounded-full bg-primary/10 flex items-center justify-center'>
-                  <Shield className='w-20 h-20 text-primary' />
-                </div>
-              </div>
-              {/* Orbiting icons */}
-              <div className='absolute top-4 left-1/2 -translate-x-1/2 bg-blue-100 rounded-xl p-3 shadow-md'>
-                <Monitor className='w-7 h-7 text-blue-600' />
-              </div>
-              <div className='absolute top-1/2 right-4 -translate-y-1/2 bg-green-100 rounded-xl p-3 shadow-md'>
-                <Wifi className='w-7 h-7 text-green-600' />
-              </div>
-              <div className='absolute bottom-4 left-1/2 -translate-x-1/2 bg-purple-100 rounded-xl p-3 shadow-md'>
-                <Server className='w-7 h-7 text-purple-600' />
-              </div>
-              <div className='absolute top-1/2 left-4 -translate-y-1/2 bg-orange-100 rounded-xl p-3 shadow-md'>
-                <HardDrive className='w-7 h-7 text-orange-600' />
-              </div>
-              {/* Decorative ring */}
-              <div className='absolute inset-8 rounded-full border-2 border-dashed border-primary/20' />
+            <div className='relative w-full max-w-md aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl'>
+              <Image
+                src='https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80'
+                alt='IT Support chuyên nghiệp'
+                fill
+                className='object-cover'
+                priority
+              />
+              {/* Blend edges into section background */}
+              <div
+                className='absolute inset-0 pointer-events-none rounded-2xl'
+                style={{ background: 'linear-gradient(to right, #1e3a8a 0%, transparent 40%)' }}
+              />
             </div>
           </motion.div>
         </div>

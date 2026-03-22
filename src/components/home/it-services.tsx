@@ -2,73 +2,99 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Headphones, Network, Database, Wifi } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import Link from 'next/link';
+import { HardDrive, Monitor, Camera, Home, Zap, Cpu, MoreHorizontal } from 'lucide-react';
+import { Button } from '../ui/button';
 
-const services = [
+const personalServices = [
   {
-    icon: Headphones,
-    title: 'IT Support Tổng Thể',
-    description: 'Hỗ thợ & quản lý toàn bộ hệ thống IT',
+    icon: HardDrive,
+    title: 'Dịch vụ phần cứng',
+    description: 'Sửa chữa máy tính, nâng cấp linh kiện phần cứng.',
     bg: 'bg-blue-100',
     text: 'text-blue-600'
   },
   {
-    icon: Network,
-    title: 'Quản Trị Mạng & Firewall',
-    description: 'Quản lý hệ thống mạng, bảo mật',
-    bg: 'bg-green-100',
-    text: 'text-green-600'
+    icon: Monitor,
+    title: 'Dịch vụ phần mềm',
+    description: 'Cài đặt hệ điều hành, phần mềm và diệt virus.',
+    bg: 'bg-blue-100',
+    text: 'text-blue-600'
   },
   {
-    icon: Database,
-    title: 'Backup & Server / NAS',
-    description: 'Giải pháp backup, quản trị server',
-    bg: 'bg-purple-100',
-    text: 'text-purple-600'
+    icon: Camera,
+    title: 'Lắp đặt camera',
+    description: 'Tư vấn và lắp đặt hệ thống camera giám sát.',
+    bg: 'bg-blue-100',
+    text: 'text-blue-600'
   },
   {
-    icon: Wifi,
-    title: 'WiFi & Camera Doanh Nghiệp',
-    description: 'Lắp đặt camera, quản lý hệ thống WiFi',
-    bg: 'bg-orange-100',
-    text: 'text-orange-600'
+    icon: Home,
+    title: 'Giải pháp Smart Home',
+    description: 'Tự động hóa ngôi nhà thông minh theo yêu cầu.',
+    bg: 'bg-blue-100',
+    text: 'text-blue-600'
+  },
+  {
+    icon: Zap,
+    title: 'Giải pháp năng lượng',
+    description: 'Tư vấn và lắp đặt hệ thống điện năng lượng mặt trời.',
+    bg: 'bg-blue-100',
+    text: 'text-blue-600'
+  },
+  {
+    icon: Cpu,
+    title: 'Thiết bị smarter home',
+    description: 'Cung cấp và lắp đặt thiết bị nhà thông minh.',
+    bg: 'bg-blue-100',
+    text: 'text-blue-600'
+  },
+  {
+    icon: MoreHorizontal,
+    title: 'Dịch vụ khác',
+    description: 'Các dịch vụ IT khác theo yêu cầu của bạn.',
+    bg: 'bg-blue-100',
+    text: 'text-blue-600'
   }
 ];
 
 export function ITServices(): React.JSX.Element {
   return (
-    <section id='services' className='container py-16'>
+    <section id='services' className='container py-12'>
       <motion.h2
-        className='text-3xl font-bold text-center mb-10'
+        className='text-2xl font-bold text-center mb-8'
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        Dịch Vụ IT Doanh Nghiệp
+        Dịch Vụ IT Cho Cá Nhân
       </motion.h2>
 
-      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
-        {services.map((service, i) => {
+      <div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4'>
+        {personalServices.map((service, i) => {
           const Icon = service.icon;
           return (
             <motion.div
               key={service.title}
+              className='border rounded-xl p-4 flex flex-col gap-3 bg-background hover:shadow-md transition-shadow'
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
+              transition={{ duration: 0.4, delay: i * 0.07 }}
             >
-              <Card className='h-full hover:shadow-lg transition-shadow'>
-                <CardContent className='flex flex-col items-center text-center gap-4 p-6'>
-                  <div className={`p-4 rounded-xl ${service.bg}`}>
-                    <Icon className={`w-10 h-10 ${service.text}`} />
-                  </div>
-                  <h3 className='font-semibold text-base'>{service.title}</h3>
-                  <p className='text-sm text-muted-foreground'>{service.description}</p>
-                </CardContent>
-              </Card>
+              <div className='flex items-start gap-3'>
+                <div className={`p-2.5 rounded-lg ${service.bg} flex-shrink-0`}>
+                  <Icon className={`w-5 h-5 ${service.text}`} />
+                </div>
+                <div>
+                  <h3 className='font-semibold text-sm'>{service.title}</h3>
+                  <p className='text-xs text-muted-foreground mt-0.5'>{service.description}</p>
+                </div>
+              </div>
+              <Button size='sm' className='w-full text-xs' asChild>
+                <Link href='/user/create-ticket'>Yêu cầu hỗ trợ</Link>
+              </Button>
             </motion.div>
           );
         })}
