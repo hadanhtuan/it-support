@@ -7,7 +7,7 @@ A comprehensive IT support management platform built with Next.js 14, Firebase, 
 This application serves as a ticketing system for IT support domain with three user roles:
 - **User**: Create and manage support tickets
 - **IT Support**: Enroll in tickets and provide technical assistance
-- **Admin**: System administration and user management
+- **Admin**: System administration and user management 
 
 Users and IT support staff communicate via Zalo (Vietnamese messaging app) for real-time support.
 
