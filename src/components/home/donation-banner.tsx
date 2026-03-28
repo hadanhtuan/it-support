@@ -18,7 +18,7 @@ export function DonationBanner(): React.JSX.Element {
         {/* QR code */}
         <div className='flex-shrink-0'>
           <Image
-            src='/qr-donation.jpg'
+            src='/qr-donation.png'
             alt='QR Ủng hộ dự án IT Support'
             width={260}
             height={260}

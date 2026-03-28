@@ -75,9 +75,10 @@ function buildGradient(types: { percent: number; color: string }[]): string {
 function formatDate(ts: unknown): string {
   if (!ts) return '';
   try {
-    const date = typeof ts === 'object' && ts !== null && 'toDate' in ts
-      ? (ts as { toDate: () => Date }).toDate()
-      : new Date(ts as string | number);
+    const date =
+      typeof ts === 'object' && ts !== null && 'toDate' in ts
+        ? (ts as { toDate: () => Date }).toDate()
+        : new Date(ts as string | number);
     return date.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' });
   } catch {
     return '';
@@ -90,18 +91,18 @@ export function ITScope(): React.JSX.Element {
 
   return (
     <section className='container py-12'>
-      <div className='flex flex-col lg:flex-row gap-8'>
-        {/* Left: Business services (static content, no fetch needed) */}
-        <div className='w-full lg:w-3/5'>
-          <motion.h2
-            className='text-2xl font-bold mb-6'
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            Dịch Vụ IT Cho Doanh Nghiệp
-          </motion.h2>
+      <motion.h2
+        className='text-2xl font-bold text-center mb-6'
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        Dịch Vụ IT Cho Doanh Nghiệp
+      </motion.h2>
+      <div className='flex flex-col md:flex-row gap-8 items-start'>
+        {/* Left: Business services */}
+        <div className='w-full md:w-3/5'>
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
             {businessServices.map((service, i) => {
               const Icon = service.icon;
@@ -130,7 +131,7 @@ export function ITScope(): React.JSX.Element {
         </div>
 
         {/* Right panel — data from shared useTicketStats hook */}
-        <div className='w-full lg:w-2/5 flex flex-col gap-6'>
+        <div className='w-full md:w-2/5 flex flex-col gap-6'>
           {/* Incident types donut chart */}
           <motion.div
             className='border rounded-xl p-5 bg-background'
@@ -182,7 +183,7 @@ export function ITScope(): React.JSX.Element {
 
           {/* Recent tickets */}
           <motion.div
-            className='border rounded-xl p-5 bg-background'
+            className='border rounded-xl p-5 bg-background flex-1 flex flex-col'
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -214,12 +215,9 @@ export function ITScope(): React.JSX.Element {
                       <div key={ticket.id} className='flex items-center justify-between gap-2'>
                         <div className='min-w-0'>
                           <div className='text-sm font-medium truncate'>
-                            <span className='text-muted-foreground'>#{ticket.id.slice(-4)}</span>{' '}
-                            {ticket.title}
+                            <span className='text-muted-foreground'>#{ticket.id.slice(-4)}</span> {ticket.title}
                           </div>
-                          <div className='text-xs text-muted-foreground'>
-                            {formatDate(ticket.createdAt)}
-                          </div>
+                          <div className='text-xs text-muted-foreground'>{formatDate(ticket.createdAt)}</div>
                         </div>
                         <span
                           className={`text-xs px-2 py-0.5 rounded-full font-medium flex-shrink-0 ${statusMeta.className}`}

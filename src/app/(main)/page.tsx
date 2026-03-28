@@ -6,7 +6,6 @@ import { ITStats } from '@/components/home/it-stats';
 import { ITScope } from '@/components/home/it-scope';
 import { ITServices } from '@/components/home/it-services';
 import { CallToAction } from '@/components/home';
-import { DonationBanner } from '@/components/home/donation-banner';
 
 export default function Home(): React.JSX.Element {
   useEffect(() => {
@@ -23,7 +22,6 @@ export default function Home(): React.JSX.Element {
       <ITScope />
       <CallToAction />
       <ITServices />
-      <DonationBanner />
     </div>
   );
 }

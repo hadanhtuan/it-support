@@ -3,7 +3,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { HardDrive, Monitor, Camera, Home, Zap, Cpu, MoreHorizontal } from 'lucide-react';
+import Image from 'next/image';
+import { HardDrive, Monitor, Camera, Home, Zap, Cpu, MoreHorizontal, Heart } from 'lucide-react';
 import { Button } from '../ui/button';
 
 const personalServices = [
@@ -77,7 +78,7 @@ export function ITServices(): React.JSX.Element {
           return (
             <motion.div
               key={service.title}
-              className='border rounded-xl p-4 flex flex-col gap-3 bg-background hover:shadow-md transition-shadow'
+              className='border rounded-xl p-4 flex flex-col justify-between gap-3 bg-background hover:shadow-md transition-shadow'
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -98,6 +99,28 @@ export function ITServices(): React.JSX.Element {
             </motion.div>
           );
         })}
+
+        {/* QR Donation card */}
+        <motion.div
+          className='border rounded-xl p-4 flex flex-col items-center justify-center gap-3 bg-background hover:shadow-md transition-shadow'
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: personalServices.length * 0.07 }}
+        >
+          <div className='flex items-center gap-1.5'>
+            <Heart className='w-4 h-4 text-red-500 fill-red-500' />
+            <h3 className='font-semibold text-sm'>Ủng Hộ dự án IT Support</h3>
+          </div>
+          <Image
+            src='/qr-donation.png'
+            alt='QR Ủng hộ dự án IT Support'
+            width={140}
+            height={140}
+            className='rounded-lg border shadow-sm'
+          />
+          <p className='text-xs text-muted-foreground text-center'>Cảm ơn sự hỗ trợ của bạn</p>
+        </motion.div>
       </div>
     </section>
   );

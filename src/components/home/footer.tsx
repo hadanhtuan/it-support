@@ -16,13 +16,13 @@ export function Footer(): React.JSX.Element | null {
         <div className='flex flex-col items-center text-center gap-2'>
           <span className='font-bold text-base text-white'>IT Support Chuyên Nghiệp</span>
           <p className='text-sm text-blue-100'>
-            <span className='font-medium'>Hotline:</span> 0123 456 789
+            <span className='font-medium'>Hotline:</span> 0975115994
           </p>
           <p className='text-sm text-blue-100'>
-            <span className='font-medium'>Email:</span> info@itsupport.com
+            <span className='font-medium'>Email:</span> taxuanky.ht@gmail.com
           </p>
           <p className='text-sm text-blue-100'>
-            <span className='font-medium'>Khu vực hoạt động:</span> TP.HCM &amp; Lân Cận
+            <span className='font-medium'>Khu vực hoạt động:</span> Việt Nam
           </p>
         </div>
       </div>

@@ -196,9 +196,9 @@ export default function HeaderComponent(): JSX.Element {
   };
 
   return (
-    <header className='sticky top-0 z-50 w-full border-b border-[#1e2f9a]' style={{ background: '#3d52c4' }}>
+    <header className='sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80'>
       {/* Top Row */}
-      <div className='border-b border-[#1e2f9a]'></div>
+      <div className='border-b border-border'></div>
       {/* Bottom Row */}
       <div className='container flex h-16 items-center justify-between'>
         {/* Bottom Left - Logo */}
